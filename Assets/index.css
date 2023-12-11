@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Nova+Square&family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+/* HEADER */
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+}
+
+.header-container {
+    display: flex;
+    width: 80%;
+}
+
+.header-item {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo {
+    width: 5rem;
+    cursor: pointer;
+}
+
+.search {
+    border: 1px solid rgba(0, 0, 0, .5);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem;
+    width: 100%;
+}
+
+.search input {
+    width: 90%;
+}
+
+.search i {
+    opacity: .5;
+    cursor: pointer;
+}
+
+.lang-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 .5rem;
+    height: 2rem;
+    cursor: pointer;
+    transition: .3s;
+    z-index: 1;
+}
+
+.lang-content:hover .lang-select {
+    display: flex;
+}
+
+.lang-select {
+    position: absolute;
+    left: 0;
+    top: 2rem;
+    width: 15rem;
+    box-shadow: 0px 0px 10px 2px rgba(51, 51, 51, .5);
+    background-color: #fff;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+    padding: .5rem;
+    border-radius: .25rem;
+    height: fit-content;
+}
+
+.lang-select li:not(:first-child) {
+    opacity: .6;
+    width: 100%;
+}
+
+.lang-select li:hover:not(:first-child) {
+    opacity: 1;
+}
+
+.lang-select li img {
+    width: 1.5rem;
+}
+
+.header-link-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: Poppins, san-serif;
+}
+
+.header-link-container a {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.header-link-container a:hover:not(:last-child) {
+    text-decoration: underline;
+}
+
+.header-link-container a:not(:last-child)::after {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    width: 2px;
+    height: 15px;
+    background: #626262;
+    content: '';
+}
+
+.header-link-container a:nth-child(3) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* NAVBAR */
+
+.nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-height: 3rem;
+    background-color: #f3f3f3;
+}
+
+.nav-titles {
+    min-height: inherit;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-family: sans-serif;
+}
+
+.nav-titles li a {
+    padding: 0 1rem;
+    text-align: center;
+    color: #444;
+    font-size: small;
+    position: relative;
+}
+
+.nav-titles li:first-child {
+    display: flex;
+    align-items: center;
+    min-height: inherit;
+    background-color: #fc259c;
+    width: 15rem;
+}
+
+.nav-titles li:first-child a {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    min-height: inherit;
+    color: #fff;
+}
+
+.nav-titles ul li a:not(:last-child)::after {
+    position: absolute;
+    top: 1px;
+    right: 0px;
+    width: 2px;
+    height: 15px;
+    background: #626262;
+    content: '';
+}
+
+.nav-titles li:first-child a::after {
+    content: '\f107';
+    font-family: fontAwesome;
+    color: #fff;
+}
+
+/* MAIN */
+
+.slider {
+    margin: 1rem auto;
+    position: relative;
+    display: grid;
+    place-items: center;
+    max-width: 90%;
+    overflow: hidden;
+}
+
+.slide {
+    min-height: 20rem;
+    display: flex;
+}
+
+.slide img {
+    width: 100%;
+    flex: 1 0 100%;
+    object-fit: cover;
+}
+
+.slider-btn-container {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider-btn {
+    margin: 0 1rem;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.slider-btn:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.slider-btn-left::before {
+    content: "";
+    font-family: FontAwesome;
+    font-size: 30px;
+}
+
+.slider-btn-right::before {
+    content: "";
+    font-family: FontAwesome;
+    font-size: 30px;
+}
