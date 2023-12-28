@@ -1,0 +1,22 @@
+[
+    {
+        "url": "./images/header/slide1.jpg",
+        "alt": "Picture"
+    },
+    {
+        "url": "./images/header/slide2.jpg",
+        "alt": "Picture"
+    },
+    {
+        "url": "./images/header/slide3.jpg",
+        "alt": "Picture"
+    },
+    {
+        "url": "./images/header/slide4.jpg",
+        "alt": "Picture"
+    },
+    {
+        "url": "./images/header/slide5.jpg",
+        "alt": "Picture"
+    }
+]
