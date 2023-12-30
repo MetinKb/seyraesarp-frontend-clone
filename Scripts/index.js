@@ -6,32 +6,51 @@ window.addEventListener('scroll', () => {
     window.scrollY > nav.offsetTop ? nav.classList.add("fixed") : nav.classList.remove("fixed")
 })
 
+// WINDOW FOCUS/BLUR SLIDE STOP/CONTINUE
+
+window.onblur = () => {
+    headerAutoSlide = false
+    productAutoSlide = false
+}
+
+window.onfocus = () => {
+    headerAutoSlide = true
+    productAutoSlide = true
+}
+
 // HEADER SLIDER
 
-const slide = document.querySelector('.slide')
-const rightButton = document.querySelector('.slider-btn-right')
-const leftButton = document.querySelector('.slider-btn-left')
-let isMoving = false
-let slideIndex = 1
-let autoSlide = true
+const headerSlide = document.querySelector('.slide'),
+    headerRightButton = document.querySelector('.slider-btn-right'),
+    headerLeftButton = document.querySelector('.slider-btn-left')
+let headerSliderIsMoving = false,
+    headerSlideIndex = 0,
+    headerAutoSlide = true
 
 function processHeaderImages(item) {
     return `<img src='${item.url}' alt='${item.alt}'>`
 }
 
-function moveSlides() {
-    if (slideIndex == 6) {
-        slide.style.transform = `translateX(-100%)`
+function moveHeaderSlides() {
+    if (headerSlideIndex == 5) {
+        headerSlide.style.transform = `translateX(0%)`
+        headerSlideIndex = 0
         return
     }
-    slide.style.transform = `translateX(-${slideIndex * 100}%)`
+    if (headerSlideIndex == -1) {
+        headerSlide.style.transform = `translateX(-400%)`
+        headerSlideIndex = 4
+        return
+    }
+
+    headerSlide.style.transform = `translateX(-${headerSlideIndex * 100}%)`
 }
 
-function moveHandler(direction) {
-    isMoving = true
-    slide.style.transition = `transform 450ms ease-in-out`
-    direction !== 'right' ? (slideIndex -= 1) : (slideIndex += 1)
-    moveSlides()
+function moveHeaderHandler(direction) {
+    headerSliderIsMoving = true
+    headerSlide.style.transition = `transform 500ms ease`
+    direction !== 'right' ? (headerSlideIndex -= 1) : (headerSlideIndex += 1)
+    moveHeaderSlides()
 }
 
 async function fetchHeaderImages() {
@@ -39,58 +58,45 @@ async function fetchHeaderImages() {
         if (!res.ok) throw new Error('Fetch error')
         return res.json()
     }).then(data => {
-        data.push(data[0])
-        data.unshift(data[data.length - 2])
-
-        slide.innerHTML = data.map(processHeaderImages).join('')
-        moveSlides()
+        console.log(data)
+        headerSlide.innerHTML = data.map(processHeaderImages).join('')
+        moveHeaderSlides()
     }).catch(error => console.log(error))
 }
 
 fetchHeaderImages()
 
 setInterval(() => {
-    if (autoSlide) {
-        moveHandler('right')
+    if (headerAutoSlide) {
+        moveHeaderHandler('right')
     }
 }, 3000)
 
-window.onblur = () => autoSlide = false
-window.onfocus = () => autoSlide = true
-
 // Button Clicks
-rightButton.addEventListener('click', (e) => {
-    autoSlide = false
-    if (isMoving) return
-    moveHandler('right')
-    setTimeout(() => autoSlide = true, 10000)
+headerRightButton.addEventListener('click', () => {
+    headerAutoSlide = false
+    if (headerSliderIsMoving) return
+    moveHeaderHandler('right')
+    setTimeout(() => headerAutoSlide = true, 10000)
 })
 
-leftButton.addEventListener('click', () => {
-    autoSlide = false
-    if (isMoving) return
-    moveHandler('left')
-    setTimeout(() => autoSlide = true, 10000)
+headerLeftButton.addEventListener('click', () => {
+    headerAutoSlide = false
+    if (headerSliderIsMoving) return
+    moveHeaderHandler('left')
+    setTimeout(() => headerAutoSlide = true, 10000)
 })
 
-slide.addEventListener('transitionend', () => {
-    isMoving = false
-    const slidesArray = [...slide.querySelectorAll('img')]
-    if (slideIndex === 0) {
-        slide.style.transition = 'none'
-        slideIndex = slidesArray.length - 2
-        moveSlides()
-    }
-    if (slideIndex === slidesArray.length - 1) {
-        slide.style.transition = 'none'
-        slideIndex = 1
-        moveSlides()
-    }
-})
+headerSlide.addEventListener('transitionend', () => headerSliderIsMoving = false)
 
 // PRODUCT SLIDER
 
-const productSlide = document.querySelector(".products-slide")
+const productSlide = document.querySelector('.products-slide'),
+    productRightButton = document.querySelector('.products-btn-right'),
+    productLeftButton = document.querySelector('.products-btn-left')
+let productSliderIsMoving = false,
+    productSlideIndex = 0,
+    productAutoSlide = true
 
 function processProducItems(item) {
     return (
@@ -100,6 +106,10 @@ function processProducItems(item) {
                 <a href="#" class="img-link">
                     <img class="product-image" src=${item.url} alt=${item.src}>
                 </a>
+                <div class="fav-icon" title="Favorilere Ekle"></div>
+                <div class="shopping-card">
+                    <a href="#" title="Sepete Ekle">Sepete Ekle</a>
+                </div>
             </div>
             <div class="product-details">
                 <span class="product-name">
@@ -120,7 +130,7 @@ async function fetchProductImages() {
         return res.json()
     }).then(data => {
         productSlide.innerHTML = data.map(processProducItems).join('')
-        moveSlides()
+        moveProductSlides()
     }).catch(error => console.log(error))
 }
 
