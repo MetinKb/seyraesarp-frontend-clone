@@ -98,7 +98,7 @@ a:active {
     padding: .5rem;
     border-radius: .25rem;
     height: fit-content;
-    z-index: 4;
+    z-index: 5;
 }
 
 .lang-select li:not(:first-child) {
