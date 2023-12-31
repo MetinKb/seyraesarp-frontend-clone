@@ -338,6 +338,7 @@ a:active {
     margin: 2rem auto;
     display: grid;
     place-items: center;
+    overflow: hidden;
     font-family: Poppins, sans-serif;
 }
 
@@ -354,7 +355,6 @@ a:active {
     max-width: 100%;
     height: fit-content;
     display: flex;
-    overflow: hidden;
     gap: 1rem;
     transition: .5s all ease-in-out;
 }
@@ -384,7 +384,7 @@ a:active {
 }
 
 .product {
-    flex: 1 0 calc(20% - .8rem);
+    flex: 1 0 calc(20% - 1rem);
     position: relative;
     display: flex;
     flex-direction: column;

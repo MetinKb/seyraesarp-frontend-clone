@@ -58,7 +58,6 @@ async function fetchHeaderImages() {
         if (!res.ok) throw new Error('Fetch error')
         return res.json()
     }).then(data => {
-        console.log(data)
         headerSlide.innerHTML = data.map(processHeaderImages).join('')
         moveHeaderSlides()
     }).catch(error => console.log(error))
@@ -98,6 +97,18 @@ let productSliderIsMoving = false,
     productSlideIndex = 0,
     productAutoSlide = true
 
+function moveProductSlides() {
+    productSlide.style.transform = `translateX(-${productSlideIndex * 20}%)`
+}
+
+function moveProductHandler(direction) {
+    productSliderIsMoving = true
+    productSlide.style.transition = `transform 500ms ease`
+    direction !== 'right' ? (productSlideIndex -= 1) : (productSlideIndex += 1)
+    console.log(productSlideIndex)
+    moveProductSlides()
+}
+
 function processProducItems(item) {
     return (
         `<div class="product">
@@ -135,3 +146,30 @@ async function fetchProductImages() {
 }
 
 fetchProductImages()
+
+setInterval(() => {
+    if (productAutoSlide && productSlideIndex !== 6) {
+        moveProductHandler('right')
+    }
+}, 5000)
+
+// Button Clicks
+productRightButton.addEventListener('click', () => {
+    if (productSlideIndex !== 6) {
+        productAutoSlide = false
+        if (productSliderIsMoving) return
+        moveProductHandler('right')
+        setTimeout(() => productAutoSlide = true, 10000)
+    }
+})
+
+productLeftButton.addEventListener('click', () => {
+    if (productSlideIndex !== 0) {
+        productAutoSlide = false
+        if (productSliderIsMoving) return
+        moveProductHandler('left')
+        setTimeout(() => productAutoSlide = true, 10000)
+    }
+})
+
+productSlide.addEventListener('transitionend', () => productSliderIsMoving = false)
