@@ -38,8 +38,8 @@ function moveHeaderSlides() {
         return
     }
     if (headerSlideIndex == -1) {
-        headerSlide.style.transform = `translateX(-400%)`
-        headerSlideIndex = 4
+        headerSlide.style.transform = `translateX(-${(headerSlide.children.length - 1) * 100}%)`
+        headerSlideIndex = headerSlide.children.length - 1
         return
     }
 
@@ -48,7 +48,6 @@ function moveHeaderSlides() {
 
 function moveHeaderHandler(direction) {
     headerSliderIsMoving = true
-    headerSlide.style.transition = `transform 500ms ease`
     direction !== 'right' ? (headerSlideIndex -= 1) : (headerSlideIndex += 1)
     moveHeaderSlides()
 }
