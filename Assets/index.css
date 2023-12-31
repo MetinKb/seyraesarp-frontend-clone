@@ -77,7 +77,7 @@ a:active {
     height: 2rem;
     cursor: pointer;
     transition: .3s;
-    z-index: 5;
+    z-index: 4;
 }
 
 .lang-content:hover .lang-select {
