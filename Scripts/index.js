@@ -105,7 +105,6 @@ function moveProductHandler(direction) {
     productSliderIsMoving = true
     productSlide.style.transition = `transform 500ms ease`
     direction !== 'right' ? (productSlideIndex -= 1) : (productSlideIndex += 1)
-    console.log(productSlideIndex)
     moveProductSlides()
 }
 
@@ -114,6 +113,8 @@ function processProducItems(item) {
         `<div class="product">
             <a class="item-category">İpek Eşarp</a>
             <div class="product-img-container">
+            <span class="sale">%8</span>
+            <span class="new">Yeni</span>
                 <a href="#" class="img-link">
                     <img class="product-image" src=${item.url} alt=${item.src}>
                 </a>
