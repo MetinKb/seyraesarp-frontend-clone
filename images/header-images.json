@@ -18,5 +18,13 @@
     {
         "url": "./images/header/slide5.jpg",
         "alt": "Picture"
+    },
+    {
+        "url": "./images/header/slide6.jpg",
+        "alt": "Picture"
+    },
+    {
+        "url": "./images/header/slide7.jpg",
+        "alt": "Picture"
     }
 ]

@@ -32,7 +32,7 @@ function processHeaderImages(item) {
 }
 
 function moveHeaderSlides() {
-    if (headerSlideIndex == 5) {
+    if (headerSlideIndex == headerSlide.children.length) {
         headerSlide.style.transform = `translateX(0%)`
         headerSlideIndex = 0
         return
@@ -103,7 +103,6 @@ function moveProductSlides() {
 
 function moveProductHandler(direction) {
     productSliderIsMoving = true
-    productSlide.style.transition = `transform 500ms ease`
     direction !== 'right' ? (productSlideIndex -= 1) : (productSlideIndex += 1)
     moveProductSlides()
 }
@@ -149,14 +148,14 @@ async function fetchProductImages() {
 fetchProductImages()
 
 setInterval(() => {
-    if (productAutoSlide && productSlideIndex !== 6) {
+    if (productAutoSlide && productSlideIndex !== productSlide.children.length - 5) {
         moveProductHandler('right')
     }
 }, 5000)
 
 // Button Clicks
 productRightButton.addEventListener('click', () => {
-    if (productSlideIndex !== 6) {
+    if (productSlideIndex !== productSlide.children.length - 5) {
         productAutoSlide = false
         if (productSliderIsMoving) return
         moveProductHandler('right')
