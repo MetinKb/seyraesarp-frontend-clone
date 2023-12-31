@@ -362,13 +362,13 @@ a:active {
 .products .products-btn-left {
     position: absolute;
     left: 0;
-    z-index: 1;
+    z-index: 2;
 }
 
 .products .products-btn-right {
     position: absolute;
     right: 0;
-    z-index: 1;
+    z-index: 2;
 }
 
 .products-btn-left::after {
