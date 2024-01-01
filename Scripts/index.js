@@ -2,9 +2,7 @@
 
 const nav = document.querySelector(".nav")
 
-window.addEventListener('scroll', () => {
-    window.scrollY > nav.offsetTop ? nav.classList.add("fixed") : nav.classList.remove("fixed")
-})
+window.addEventListener('scroll', () => window.scrollY > nav.offsetTop ? nav.classList.add("fixed") : nav.classList.remove("fixed"))
 
 // WINDOW FOCUS/BLUR SLIDE STOP/CONTINUE
 
@@ -19,8 +17,6 @@ window.onfocus = () => {
 }
 
 // HEADER SLIDER
-let isPhone = screen.width < 600
-const images = isPhone ? './images/header-images-phone.json' : './images/header-images.json'
 const headerSlide = document.querySelector('.slide'),
     headerRightButton = document.querySelector('.slider-btn-right'),
     headerLeftButton = document.querySelector('.slider-btn-left')
@@ -54,11 +50,10 @@ function moveHeaderHandler(direction) {
 }
 
 async function fetchHeaderImages() {
-    await fetch(images).then(res => {
+    await fetch(screen.width < 600 ? './images/header-images-phone.json' : './images/header-images.json').then(res => {
         if (!res.ok) throw new Error('Fetch error')
         return res.json()
     }).then(data => {
-        console.log(data)
         headerSlide.innerHTML = data.map(processHeaderImages).join('')
         moveHeaderSlides()
     }).catch(error => console.log(error))
@@ -66,10 +61,11 @@ async function fetchHeaderImages() {
 
 fetchHeaderImages()
 
+window.addEventListener('resize', () => screen.width < 600 && fetchHeaderImages())
+window.addEventListener('resize', () => screen.width > 600 && fetchHeaderImages())
+
 setInterval(() => {
-    if (headerAutoSlide) {
-        moveHeaderHandler('right')
-    }
+    if (headerAutoSlide) moveHeaderHandler('right')
 }, 3000)
 
 // Button Clicks
@@ -99,7 +95,7 @@ let productSliderIsMoving = false,
     productAutoSlide = true
 
 function moveProductSlides() {
-    productSlide.style.transform = `translateX(-${productSlideIndex * 20}%)`
+    productSlide.style.transform = `translateX(-${productSlideIndex * (screen.width < 600 ? 50 : 20)}%)`
 }
 
 function moveProductHandler(direction) {
@@ -149,14 +145,13 @@ async function fetchProductImages() {
 fetchProductImages()
 
 setInterval(() => {
-    if (productAutoSlide && productSlideIndex !== productSlide.children.length - 5) {
+    if (productAutoSlide && productSlideIndex !== productSlide.children.length - (screen.width < 600 ? 2 : 5))
         moveProductHandler('right')
-    }
 }, 5000)
 
 // Button Clicks
 productRightButton.addEventListener('click', () => {
-    if (productSlideIndex !== productSlide.children.length - 5) {
+    if (productSlideIndex !== productSlide.children.length - (screen.width < 600 ? 2 : 5)) {
         productAutoSlide = false
         if (productSliderIsMoving) return
         moveProductHandler('right')
