@@ -19,7 +19,8 @@ window.onfocus = () => {
 }
 
 // HEADER SLIDER
-
+let isPhone = screen.width < 600
+const images = isPhone ? './images/header-images-phone.json' : './images/header-images.json'
 const headerSlide = document.querySelector('.slide'),
     headerRightButton = document.querySelector('.slider-btn-right'),
     headerLeftButton = document.querySelector('.slider-btn-left')
@@ -53,10 +54,11 @@ function moveHeaderHandler(direction) {
 }
 
 async function fetchHeaderImages() {
-    await fetch('./images/header-images.json').then(res => {
+    await fetch(images).then(res => {
         if (!res.ok) throw new Error('Fetch error')
         return res.json()
     }).then(data => {
+        console.log(data)
         headerSlide.innerHTML = data.map(processHeaderImages).join('')
         moveHeaderSlides()
     }).catch(error => console.log(error))
