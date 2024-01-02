@@ -695,13 +695,8 @@ h2 {
         align-items: center;
         justify-content: space-between;
         border-radius: 1rem;
-        padding: 1.5rem;
+        padding: 1rem;
         width: calc(100% - 5rem);
-    }
-
-    .mobile-nav-top span input,
-    i {
-        font-size: 1.25rem;
     }
 
     .mobile-nav-top .lnr-cross {
