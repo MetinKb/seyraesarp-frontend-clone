@@ -10,14 +10,19 @@ open.addEventListener("click", () => {
     document.body.style.overflow = "hidden"
 })
 
-close.addEventListener("click", () => {
+close.addEventListener("click", closeNavbar)
+overlay.addEventListener("click", closeNavbar)
+
+function closeNavbar() {
     nav.style.left = "-100%"
     overlay.style.display = "none"
     document.body.style.overflow = "auto"
-})
+}
 
 
-// FIXED NAV WHEN SCROLL
+// FIXED NAV & B0ACK TO TOP BUTTON WHEN SCROLL
+const backToTop = document.querySelector(".back-to-top")
+window.addEventListener('scroll', () => window.scrollY > 200 ? backToTop.classList.add("top-button-active") : backToTop.classList.remove("top-button-active"))
 window.addEventListener('scroll', () => window.scrollY > nav.offsetTop ? nav.classList.add("fixed") : nav.classList.remove("fixed"))
 
 // WINDOW FOCUS/BLUR SLIDE STOP/CONTINUE
