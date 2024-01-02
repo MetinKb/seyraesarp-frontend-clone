@@ -15,6 +15,8 @@
 <body>
 
     <header class="header">
+        <div class="overlay"></div>
+        <i class="lnr lnr-menu"></i>
         <div class="header-container">
             <div class="header-item logo-container">
                 <img class="logo" src="../images/header/logo.png" alt="Seyra Eşarp" title="Ana Sayfa">
@@ -55,11 +57,27 @@
                     Sepetim(0)
                 </a>
             </div>
+            <div class="mobile-icons">
+                <a href="#">
+                    <i class="lnr lnr-user"></i>
+                </a>
+                <a href="#">
+                    <i class="lnr lnr-cart"></i>
+                </a>
+            </div>
         </div>
         <nav class="nav">
+            <div class="mobile-nav-top">
+                <span>
+                    <input type="text" placeholder="Aradığınız Ürünü Yazın...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <i class="lnr lnr-cross"></i>
+            </div>
             <ul class="nav-titles">
                 <li class="pink-list-item">
                     <a href="#" class="pink sup-title" title="İPEK EŞARP">İPEK EŞARP</a>
+                    <i class="mobile-list-icon lnr lnr-chevron-down"></i>
                     <ul class="nav-sub-container nav-sub-container-1">
                         <li>
                             <a href="#" target="_self" title="Seyra İpek Eşarp">Seyra İpek Eşarp</a>
@@ -142,6 +160,7 @@
                 </li>
                 <li class="sup-list-item">
                     <a href="#" class="sup-title" title="İPEK EŞARP OUTLET">İPEK EŞARP OUTLET</a>
+                    <i class="mobile-list-icon lnr lnr-chevron-down"></i>
                     <ul class="nav-sub-container nav-sub-container-2">
                         <li>
                             <a href="#" target="_self" title="La Boutique İpek Eşarp">La Boutique İpek Eşarp</a>
@@ -174,6 +193,7 @@
                 </li>
                 <li class="sup-list-item">
                     <a href="#" class="sup-title" title="DEFOLU İPEK EŞARP & ŞAL">DEFOLU İPEK EŞARP & ŞAL</a>
+                    <i class="mobile-list-icon lnr lnr-chevron-down"></i>
                     <ul class="nav-sub-container nav-sub-container-3">
                         <li>
                             <a href="#" target="_self" title="Aker Defolu İpek Eşarp ">Aker Defolu İpek Eşarp </a>
@@ -205,6 +225,7 @@
                 </li>
                 <li class="sup-list-item">
                     <a href="#" class="sup-title" title="EŞARP">EŞARP</a>
+                    <i class="mobile-list-icon lnr lnr-chevron-down"></i>
                     <ul class="nav-sub-container nav-sub-container-4">
                         <li>
                             <a href="#" target="_self" title="Defolu Polyester Eşarp">Defolu Polyester Eşarp</a>
@@ -256,6 +277,7 @@
                 </li>
                 <li class="sup-list-item">
                     <a href="#" class="sup-title" title="ŞAL">ŞAL</a>
+                    <i class="mobile-list-icon lnr lnr-chevron-down"></i>
                     <ul class="nav-sub-container nav-sub-container-5">
                         <li>
                             <a href="#" target="_self" title="İPEK ŞAL">İPEK ŞAL</a>
@@ -306,6 +328,7 @@
                 </li>
                 <li class="sup-list-item">
                     <a href="#" class="sup-title" title="AKSESUAR">AKSESUAR</a>
+                    <i class="mobile-list-icon lnr lnr-chevron-down"></i>
                     <ul class="nav-sub-container nav-sub-container-6">
                         <li>
                             <a href="#" target="_self" title="Bone Boyunluk ve Bandana">Bone Boyunluk ve Bandana</a>
@@ -332,6 +355,7 @@
                 </li>
                 <li class="sup-list-item">
                     <a href="#" class="sup-title" title="MARKALAR">MARKALAR</a>
+                    <i class="mobile-list-icon lnr lnr-chevron-down"></i>
                     <ul class="nav-sub-container nav-sub-container-7">
                         <li>
                             <a href="#" target="_self" title="Seyra">Seyra</a>
@@ -379,6 +403,7 @@
                 </li>
                 <li class="sup-list-item">
                     <a href="#" class="sup-title" title="HAZIR BONE ŞAL">HAZIR BONE ŞAL</a>
+                    <i class="mobile-list-icon lnr lnr-chevron-down"></i>
                     <ul class="nav-sub-container nav-sub-container-8">
                         <li><a href="#" target="_self" title="AKSESUAR">AKSESUAR</a></li>
                         <li>
@@ -419,7 +444,7 @@
             </div>
         </section>
         <section class="main">
-            <div class="grid-8">
+            <article class="grid-8">
                 <a href="#">
                     <img src="./images/main/image1-1.jpg" alt="Image">
                 </a>
@@ -444,13 +469,13 @@
                 <a href="#">
                     <img src="./images/main/image4-2.jpg" alt="Image">
                 </a>
-            </div>
-            <div>
+            </article>
+            <article>
                 <a href="#">
                     <img src="./images/main/image5.jpg" alt="Image">
                 </a>
-            </div>
-            <div class="grid-4">
+            </article>
+            <article class="grid-4">
                 <a href="#">
                     <img src="./images/main/image6-1.jpg" alt="Image">
                 </a>
@@ -463,14 +488,136 @@
                 <a href="#">
                     <img src="./images/main/image6-4.jpg" alt="Image">
                 </a>
-            </div>
-            <div class="gird-center-bottom">
+            </article>
+            <article>
                 <a href="#">
                     <img src="./images/main/image7.jpg" alt="Image">
                 </a>
-            </div>
+            </article>
+            <article>
+                <a href="#">
+                    <img src="./images/main/bottom.jpg" alt="Image">
+                </a>
+            </article>
+            <article class="bottom-description">
+                <div>
+                    <h1>SEYRA EŞARP</h1>
+                    <h2>İpek Eşarp ve Şal Modelleri</h2>
+                    <p>
+                        <strong>Eşarp</strong>: Genellikle ince ve hafif kumaşlardan üretilen eşarplar, tesettür
+                        giyimin
+                        vazgeçilmez bir parçasıdır.
+                        <br><br>
+                        Armine ipek eşarp ve Aker ipek eşarp vb. eşarplar tesettürlü kadınlar tarafından sık
+                        kullanılan
+                        eşarp modelleridir. İpek ve saten gibi dayanıklı malzemelerden yapılan bu eşarplar, uzun
+                        ömürlü
+                        olması sebebi ile tercih edilmektedir. Kişisel tercih ve zevklerinize uygun olan eşarp
+                        modellerini seçerek tarzınızı dilediğiniz gibi yansıtabilirsiniz.
+                        <br><br>
+                        <strong>İpek Eşarp Modelleri</strong>
+                        <br><br>
+                        <strong>Armine İpek Eşarp</strong>
+                        <br>
+                        Armine eşarplar, kaliteli kumaşlardan üretilen ve çeşitli renk seçeneği sunan eşarp
+                        modelleridir. Hafif ve yumuşak yapılarıyla bilinen Armine eşarplar, günlük giyimde
+                        rahatlıkla
+                        tercih edebileceğiniz ürünlerdir. Tesettürlü kadınların şık ve zarif bir görünüm için tercih
+                        ettiği armine ipek eşarplar ile kombininizi tamamlayarak gün boyu rahat hissedebilirsiniz.
+                        <br><br>
+                        <strong>Aker İpek Eşarp</strong>
+                        <br>
+                        Aker eşarplar, ipek, saten ve şifon gibi yumuşak dokulu kumaşlardan üretilir. Aker eşarplar,
+                        kaliteli malzemelerden üretildiği için dayanıklıdır ve uzun süre kullanılabilirler. Esnek
+                        yapısı
+                        sayesinde hızlı bir şekilde bağlanabilen Aker ipek eşarplar, zaman kaybı yaşamanızı
+                        engeller.
+                        Aker eşarpların tesettürlü kadınlar tarafından tercih edilme sebeplerinden biri de farklı
+                        renk,
+                        desen ve tasarımlara sahip olmasıdır. Sizi yansıtan eşarp modellerini seçerek kombininizi
+                        tamamlayabilirsiniz.
+                        <br><br>
+                        <strong>Eşarp Mıknatısı</strong>: Eşarp mıknatısı, genellikle eşarpları istenen şekilde
+                        tutmak
+                        ve kaymasını önlemek için kullanılan küçük ve pratik aksesuarlardır.
+                        <br><br>
+                        <strong>Eşarp Askısı</strong>: Eşarp askısı, eşarplarınızı kırışmadan, düzenli bir şekilde
+                        tutmanızı sağlayan askı modelidir. Aynı zamanda bu askılar, dolabınızda karışıklığı
+                        önleyecek ve
+                        eşarplarınızı hızlı bir şekilde bulmanızı sağlayacaktır.
+                        <br><br>
+                        <strong>Şal</strong>: Şallar tesettürlü kadınlar arasında oldukça popüler hale gelmiştir.
+                        Hem
+                        şık hem rahat olmaları nedeniyle kadınlar arasında bu başörtüsüne ilgi giderek artmaktadır.
+                        Şallar pratikliği ve duruşu nedeniyle tercih edilmektedir.
+                        Farklı renk ve desenlere sahip şal modelleri bulunmaktadır. Tek renkli şallar özellikle
+                        desenli
+                        ve çok renkli giysiler için uygun olabilir. Ayrıca ipek şallar ile kombininize şık bir
+                        görünüm
+                        kazandırabilirsiniz.
+                        <br><br>
+                        <strong>Armine Şal</strong>: Armine şallar, kalite, tasarım ve moda trendlerine uyum
+                        sağlayabilen ürünlerdir. Tesettür giyimde şık ve zarif bir seçenek olarak tercih edilen bu
+                        şallar, geniş bir renk ve desen seçeneği sunarak kişisel tercihinizi yansıtmanıza imkan
+                        tanır.
+                        Armine ipek şallar, yüksek kaliteye sahip ürünlerdir. Kaliteli ve dayanıklı olan ipek şallar
+                        uzun ömürlü olması sebebiyle de müşteriler tarafından tercih edilmektedir.
+                        <br><br>
+                        <strong>Aker Şal</strong>: İpek ve penye kumaştan üretilen aker şallar, tesettür giyimde
+                        yaygın
+                        bir tercih olarak ön plana çıkmaktadır.
+                        <br><br>
+                        İpek şal ve penye şal, en çok tercih edilen şal modellerindendir. Kumaşların kaliteli
+                        olması,
+                        uzun süre kullanabileceğiniz şallara sahip olmanızı sağlar. Farklı desen ve renklere sahip
+                        şal
+                        modelleri ile kombinlerinizi dilediğiniz gibi şekillendirebilirsiniz.
+                        <br><br>
+                        <strong>Şal İğnesi</strong>: Şal iğneleri tesettür giyimin vazgeçilmez aksesuarlarındandır.
+                        Farklı türde iğneler bulunsada önemli olan şalın kaymasını engelleyen iğneyi bulmaktır. Gün
+                        içinde rahat hissetmeniz için şalınızın şeklinin bozulmaması önemlidir. Şalınıza uygun şal
+                        iğnesi kullanarak bu sorunu yaşamaktan kurtulabilirsiniz.
+                        <br><br>
+                        <strong>Bone Modelleri</strong>
+                        <br>
+                        Tesettür boneler, başı sıkıca sararak saçı örten ve başörtüsünün düşmesini engelleyen
+                        tesettür
+                        giyim ürünleridir. Çeşitli kumaşlardan üretilmiş olan bonelerin pek çok modeli mevcuttur.
+                        Dikişli, dikişsiz, hazır bone ve penye bone gibi bone modellerinden başörtünüze en uygun
+                        boneyi
+                        seçmelisiniz. Doğru bone seçimi, başörtüsünün kaymaması ve rahat hissetmeniz için oldukça
+                        önemli
+                        bir etkendir.
+                        <br><br>
+                        <strong>Fular Modelleri</strong>
+                        <br>
+                        Moda dünyasında, fularlar şık bir aksesuar olarak kullanılır. Renkli ve desenli fularlar,
+                        bir
+                        kıyafeti veya kombini tamamlamak için tercih edilebilir. Kadınlar, giydikleri kıyafetlere
+                        hareketlilik kazandırmak amacıyla da fular kullanırlar.
+                        <br>
+                        Fularlar, çeşitli kumaşlardan üretilmektedir. İpek fular ve saten fular kadınlar tarafından
+                        tercih edilen fular türlerindendir. Kaliteli kumaşlara sahip olan bu fularlar dayanıklı ve
+                        uzun
+                        ömürlüdürler. Yıllarca kullanabileceğiniz bu kadın fular modelleri farklı renk ve desenlere
+                        sahiptir. Çeşitli fular modellerinden bulunacağınız ortama en uygun olanı seçmenizi tavsiye
+                        ederiz.
+                        <br><br>
+                        <strong>Müşterilerimiz Tarafından Tercih Edilen Diğer Eşarp Markalarımız</strong>;
+                        <br>
+                        Pierre Cardin ipek eşarp, Silk Home ipek eşarp, La Boutique ipek eşarp, Levid’or eşarp ve
+                        Vissona eşarp müşterilerimiz tarafından beğenilen ve tercih edilen eşarp markalarımızdır. Bu
+                        eşarp modellerini tercih ederek hem rahat hem şık olduğunuz kombinler yapabilirsiniz.
+                        <br><br>
+                        <strong>Müşterilerimiz Tarafından Tercih Edilen Diğer Şal Markalarımız</strong>;
+                        <br>
+                        Levid’or şal, Losyana şal, Kroren şal, Touche Prive şal, Siyane ve Armanda şal
+                        müşterilerimizin
+                        sık sık tercih ettiği diğer şal markalarımızdır.
+                    </p>
+                </div>
+            </article>
         </section>
-
     </main>
     <script src=" ../Scripts/index.js"></script>
 </body>

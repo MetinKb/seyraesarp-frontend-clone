@@ -1,11 +1,26 @@
-// FIXED NAV WHEN SCROLL
-
+// MOBILE NAV OPEN & CLOSE
 const nav = document.querySelector(".nav")
+const overlay = document.querySelector(".overlay")
+const close = document.querySelector(".lnr-cross")
+const open = document.querySelector(".lnr-menu")
 
+open.addEventListener("click", () => {
+    nav.style.left = "0"
+    overlay.style.display = "block"
+    document.body.style.overflow = "hidden"
+})
+
+close.addEventListener("click", () => {
+    nav.style.left = "-100%"
+    overlay.style.display = "none"
+    document.body.style.overflow = "auto"
+})
+
+
+// FIXED NAV WHEN SCROLL
 window.addEventListener('scroll', () => window.scrollY > nav.offsetTop ? nav.classList.add("fixed") : nav.classList.remove("fixed"))
 
 // WINDOW FOCUS/BLUR SLIDE STOP/CONTINUE
-
 window.onblur = () => {
     headerAutoSlide = false
     productAutoSlide = false
@@ -84,6 +99,7 @@ headerLeftButton.addEventListener('click', () => {
 })
 
 headerSlide.addEventListener('transitionend', () => headerSliderIsMoving = false)
+
 
 // PRODUCT SLIDER
 
