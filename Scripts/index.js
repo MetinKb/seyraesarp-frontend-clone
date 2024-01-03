@@ -1,3 +1,24 @@
+// FOOTER DESCRIPTION CONTENT HEIGHT
+const unvisibleP = document.querySelector(".footer-description p:nth-child(2)")
+const changeVisibility = document.querySelector(".footer-description button")
+
+changeVisibility.addEventListener("click", () => {
+    if (unvisibleP.style.display === 'none' || unvisibleP.style.display === '') {
+        changeVisibility.textContent = "Gizle"
+        unvisibleP.style.display = 'block';
+    } else {
+        changeVisibility.textContent = "Tümünü Göster"
+        unvisibleP.style.display = 'none';
+    }
+})
+
+// LANG SELECT FOR MOBILE
+const langContent = document.querySelector(".lang-content")
+const langSelect = document.querySelector(".lang-select")
+langContent.addEventListener("click", () => {
+    langSelect.classList.toggle("display")
+})
+
 // MOBILE NAV OPEN & CLOSE
 const nav = document.querySelector(".nav")
 const overlay = document.querySelector(".overlay")
@@ -22,6 +43,8 @@ function closeNavbar() {
 
 // FIXED NAV & B0ACK TO TOP BUTTON WHEN SCROLL
 const backToTop = document.querySelector(".back-to-top")
+backToTop.addEventListener("click", () => window.scrollTo({ top: 0 }))
+
 window.addEventListener('scroll', () => window.scrollY > 200 ? backToTop.classList.add("top-button-active") : backToTop.classList.remove("top-button-active"))
 window.addEventListener('scroll', () => window.scrollY > nav.offsetTop ? nav.classList.add("fixed") : nav.classList.remove("fixed"))
 
@@ -116,7 +139,7 @@ let productSliderIsMoving = false,
     productAutoSlide = true
 
 function moveProductSlides() {
-    productSlide.style.transform = `translateX(-${productSlideIndex * (screen.width < 600 ? 50 : 20)}%)`
+    productSlide.style.transform = `translateX(-${productSlideIndex * (screen.width < 800 ? 50 : 20)}%)`
 }
 
 function moveProductHandler(direction) {
@@ -166,13 +189,13 @@ async function fetchProductImages() {
 fetchProductImages()
 
 setInterval(() => {
-    if (productAutoSlide && productSlideIndex !== productSlide.children.length - (screen.width < 600 ? 2 : 5))
+    if (productAutoSlide && productSlideIndex !== productSlide.children.length - (screen.width < 800 ? 2 : 5))
         moveProductHandler('right')
 }, 5000)
 
 // Button Clicks
 productRightButton.addEventListener('click', () => {
-    if (productSlideIndex !== productSlide.children.length - (screen.width < 600 ? 2 : 5)) {
+    if (productSlideIndex !== productSlide.children.length - (screen.width < 800 ? 2 : 5)) {
         productAutoSlide = false
         if (productSliderIsMoving) return
         moveProductHandler('right')

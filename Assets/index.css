@@ -1,5 +1,9 @@
+/* IMPORT FONTS */
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Nova+Square&family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Nova+Square&family=Poppins&display=swap');
+
+/* RESET STYLES */
 
 * {
     margin: 0;
@@ -15,9 +19,27 @@ html {
     scroll-behavior: smooth;
 }
 
-a:active {
-    color: rgb(0, 119, 255);
+/* SCROLLBAR */
+
+body::-webkit-scrollbar {
+    width: 12px;
 }
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(252, 37, 156);
+    border-radius: 6px;
+}
+
+body::-webkit-scrollbar-track {
+    border-radius: 6px;
+    background-color: rgb(252, 37, 156, .3);
+}
+
+.display {
+    display: flex !important;
+}
+
+/* Back to top button */
 
 .back-to-top {
     position: fixed;
@@ -34,6 +56,11 @@ a:active {
     z-index: 5;
     opacity: 0;
     transition: .4s;
+    cursor: pointer;
+}
+
+.back-to-top:hover {
+    background-color: #ad00ad;
 }
 
 .top-button-active {
@@ -121,7 +148,6 @@ a:active {
     gap: .5rem;
     padding: .5rem;
     border-radius: .25rem;
-    height: fit-content;
 }
 
 .lang-select li:not(:first-child) {
@@ -519,12 +545,12 @@ a:active {
 }
 
 .main .bottom-description {
-    height: 16.5rem;
+    height: 17rem;
     font-family: Montserrat;
     overflow: auto;
-    margin-bottom: 5rem;
     background-color: #f3f3f3;
-    padding: .5rem 2rem;
+    padding: 0 2rem;
+    margin: 1rem 0;
 }
 
 .main .bottom-description h1,
@@ -540,11 +566,174 @@ h2 {
 
 /* FOOTER */
 
-.footer-container {}
+.footer-container {
+    max-width: 100%;
+    background-color: #707070;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.footer-links {
+    max-width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    gap: 1rem;
+    font-size: 12px;
+    margin-bottom: 1rem;
+}
+
+.footer-links article {
+    width: 100%;
+}
+
+.footer-links article ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.footer-links article ul li {
+    width: 100%;
+    transition: all .3s ease;
+    padding-right: .5rem;
+}
+
+.footer-links article ul li a {
+    padding-right: .5rem;
+    max-width: 100%;
+    word-break: break-word;
+}
+
+.footer-links li,
+.footer-links a {
+    font-family: Poppins, Montserrat, sans-serif;
+    color: #fff;
+}
+
+.footer-links li:not(:nth-child(1)):not(.social-media-icons):not(.store):hover {
+    padding-right: 0;
+    padding-left: .5rem;
+}
+
+.footer-links article ul li:nth-child(1) {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: sans-serif;
+}
+
+.footer-links .social-media-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.footer-links .social-media-icons span {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    margin-top: .5rem;
+}
+
+.footer-links .footer-mail {
+    display: flex;
+}
+
+.footer-links .footer-mail input {
+    color: #a5a5a5;
+    height: 2rem;
+    padding: .5rem;
+}
+
+.footer-links .footer-mail button {
+    cursor: pointer;
+    background-color: #fc259c;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0 .5rem;
+    border-radius: 0 2rem 2rem 0;
+}
+
+.footer-links .social-media-icons span a,
+.social-media-icons span i {
+    font-size: 1rem;
+    color: #fff;
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+}
+
+.social-media-icons span a:first-child {
+    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+
+.social-media-icons span a:nth-child(3) {
+    background-color: #1DA1F2;
+}
+
+.social-media-icons span a:nth-child(2) {
+    background-color: #1877F2;
+}
+
+.social-media-icons span a:last-child {
+    background-color: #FF0000;
+}
+
+.store i {
+    font-size: 1.25rem;
+    padding-left: .5rem;
+}
+
+.footer-description {
+    max-width: 95%;
+    padding: 1rem;
+    font-family: Montserrat, Poppins, sans-serif;
+    border-bottom: 1px solid #7d7d7d;
+    border-top: 1px solid #7d7d7d;
+}
+
+.footer-description button {
+    background: transparent;
+    margin-top: .5rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.footer-description p:nth-child(2) {
+    color: #fff;
+    margin-top: 1rem;
+    display: none;
+}
+
+.footer-icons {
+    margin-top: 1rem;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-icons p {
+    font-size: 12px;
+    color: #fff;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+}
 
 /* COMPUTER SIZE */
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 800px) {
 
     .overlay,
     .lnr-menu,
@@ -651,7 +840,7 @@ h2 {
 
 /* PHONE SIZE */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
 
     .slider-btn-container,
     .products-btn-left,
@@ -665,11 +854,11 @@ h2 {
     }
 
     .header-container {
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
 
     .header-item {
-        flex-grow: 0;
+        flex-grow: 1;
     }
 
     .logo-container {
@@ -766,7 +955,7 @@ h2 {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        font-size: 1.5rem;
+        font-size: 1rem;
         color: #fff;
     }
 
@@ -793,5 +982,40 @@ h2 {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
         row-gap: 1rem;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+    }
+
+    .footer-links article {
+        width: 100%;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #fff;
+    }
+
+    .footer-links article ul {
+        width: 100%;
+    }
+
+    .footer-links .social-media-icons,
+    .social-media-icons span {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-links article ul li {
+        text-align: center;
+    }
+
+    .footer-icons {
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
     }
 }
