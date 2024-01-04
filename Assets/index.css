@@ -70,6 +70,7 @@ body::-webkit-scrollbar-track {
 
 /* HEADER */
 
+
 .header {
     width: 100%;
     display: flex;
@@ -114,12 +115,13 @@ body::-webkit-scrollbar-track {
 }
 
 .search input {
-    width: 90%;
+    max-width: 90%;
     font-family: Montserrat, Poppins, sans-serif;
 }
 
 .fa-magnifying-glass {
     opacity: .5;
+    padding: 0 .5rem;
     cursor: pointer;
 }
 
@@ -170,16 +172,16 @@ body::-webkit-scrollbar-track {
     position: relative;
     text-align: center;
     width: 100%;
-    padding: 0 1rem;
+    padding: 0 .5rem;
     color: #626262;
 }
 
 .header-link-container a:not(:last-child)::after {
     position: absolute;
-    top: 3px;
-    right: 5px;
-    width: 2px;
-    height: 15px;
+    top: 0;
+    right: 1px;
+    width: 1px;
+    height: 100%;
     background: #626262;
     content: '';
 }
@@ -227,7 +229,7 @@ body::-webkit-scrollbar-track {
     padding: 0 1rem;
     text-align: center;
     color: #444;
-    font-size: small;
+    font-size: 12px;
     position: relative;
 }
 
@@ -242,7 +244,7 @@ body::-webkit-scrollbar-track {
     align-items: center;
     justify-content: center;
     background: rgba(149, 149, 149, .7);
-    font-family: poppins, sans-serif;
+    font-family: Poppins, sans-serif;
 }
 
 .nav-sub-container li {
@@ -740,6 +742,15 @@ h2 {
     letter-spacing: 1px;
 }
 
+@media screen and (max-width: 1200px) {
+
+    .header-container,
+    .nav-titles {
+        width: 100%;
+        padding: 0 1rem;
+    }
+}
+
 /* COMPUTER SIZE */
 
 @media screen and (min-width: 800px) {
@@ -755,9 +766,9 @@ h2 {
     .nav-titles .pink-list-item {
         display: flex;
         align-items: center;
-        min-height: inherit;
+        min-height: 2.5rem;
         background-color: #fc259c;
-        min-width: 15rem;
+        min-width: 14.5rem;
     }
 
     .nav-titles .pink {
@@ -765,9 +776,9 @@ h2 {
         align-items: center;
         justify-content: space-around;
         width: 100%;
-        min-height: inherit;
         color: #fff;
         font-weight: 700;
+        font-size: 15px;
     }
 
     .nav-titles li:first-child .pink::after {
@@ -862,12 +873,17 @@ h2 {
         display: none;
     }
 
+    .header {
+        align-items: flex-end;
+    }
+
     .header-container {
-        justify-content: space-between;
+        max-width: 90%;
+        justify-content: space-evenly;
     }
 
     .header-item {
-        flex-grow: 1;
+        flex-grow: 0;
     }
 
     .logo-container {
@@ -890,7 +906,7 @@ h2 {
         position: absolute;
         left: .5rem;
         top: .5rem;
-        font-size: 2.5rem;
+        font-size: 2rem;
         cursor: pointer;
     }
 
