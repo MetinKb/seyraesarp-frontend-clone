@@ -19,7 +19,31 @@ langContent.addEventListener("click", () => {
     langSelect.classList.toggle("display")
 })
 
-// MOBILE NAV OPEN & CLOSE
+// MOBILE NAV ITEMS OPEN
+
+const navItems = document.querySelectorAll(".nav-titles li")
+const navSubItems = document.querySelectorAll(".nav-sub-container")
+
+navItems.forEach(navItem => navItem.addEventListener("click", () => {
+    navSubItems.forEach(navSubItem => {
+        if (document.documentElement.clientWidth < 800) {
+            if (navItem.id === navSubItem.id) {
+                if (navSubItem.classList.contains("nav-sub-item-mobile")) {
+                    navSubItem.classList.remove("nav-sub-item-mobile")
+                    navSubItem.parentElement.children[0].children[1].style.transform = "rotate(0deg)"
+                } else {
+                    navSubItem.classList.add("nav-sub-item-mobile");
+                    navSubItem.parentElement.children[0].children[1].style.transform = "rotate(180deg)"
+                }
+            } else {
+                navSubItem.classList.remove("nav-sub-item-mobile")
+                navSubItem.parentElement.children[0].children[1].style.transform = "rotate(0deg)"
+            }
+        }
+    })
+}))
+
+// MOBILE NAVOPEN & CLOSE
 const nav = document.querySelector(".nav")
 const overlay = document.querySelector(".overlay")
 const close = document.querySelector(".lnr-cross")
@@ -41,12 +65,22 @@ function closeNavbar() {
 }
 
 
-// FIXED NAV & B0ACK TO TOP BUTTON WHEN SCROLL
+// FIXED NAV/HEADER & BACK TO TOP BUTTON WHEN SCROLL
+const header = document.querySelector(".header-container")
 const backToTop = document.querySelector(".back-to-top")
 backToTop.addEventListener("click", () => window.scrollTo({ top: 0 }))
 
-window.addEventListener('scroll', () => window.scrollY > 200 ? backToTop.classList.add("top-button-active") : backToTop.classList.remove("top-button-active"))
-window.addEventListener('scroll', () => window.scrollY > nav.offsetTop ? nav.classList.add("fixed") : nav.classList.remove("fixed"))
+window.addEventListener('scroll', () =>
+    window.scrollY > 200 ?
+        backToTop.classList.add("top-button-active") :
+        backToTop.classList.remove("top-button-active"))
+
+window.addEventListener('scroll', () => {
+    if (document.documentElement.clientWidth > 800) {
+        window.scrollY > nav.offsetTop ? nav.classList.add("fixed") : nav.classList.remove("fixed")
+    } else if (document.documentElement.clientWidth < 800)
+        window.scrollY > header.clientHeight ? header.classList.add("fixed") : header.classList.remove("fixed")
+})
 
 // WINDOW FOCUS/BLUR SLIDE STOP/CONTINUE
 window.onblur = () => {
@@ -93,7 +127,7 @@ function moveHeaderHandler(direction) {
 }
 
 async function fetchHeaderImages() {
-    await fetch(screen.width < 600 ? './images/header-images-phone.json' : './images/header-images.json').then(res => {
+    await fetch(document.documentElement.clientWidth < 600 ? './images/header-images-phone.json' : './images/header-images.json').then(res => {
         if (!res.ok) throw new Error('Fetch error')
         return res.json()
     }).then(data => {
@@ -104,8 +138,8 @@ async function fetchHeaderImages() {
 
 fetchHeaderImages()
 
-window.addEventListener('resize', () => screen.width < 600 && fetchHeaderImages())
-window.addEventListener('resize', () => screen.width > 600 && fetchHeaderImages())
+window.addEventListener('resize', () => document.documentElement.clientWidth < 800 && fetchHeaderImages())
+window.addEventListener('resize', () => document.documentElement.clientWidth > 800 && fetchHeaderImages())
 
 setInterval(() => {
     if (headerAutoSlide) moveHeaderHandler('right')
@@ -139,7 +173,7 @@ let productSliderIsMoving = false,
     productAutoSlide = true
 
 function moveProductSlides() {
-    productSlide.style.transform = `translateX(-${productSlideIndex * (screen.width < 800 ? 50 : 20)}%)`
+    productSlide.style.transform = `translateX(-${productSlideIndex * (document.documentElement.clientWidth < 800 ? 50 : 20)}%)`
 }
 
 function moveProductHandler(direction) {
@@ -189,13 +223,13 @@ async function fetchProductImages() {
 fetchProductImages()
 
 setInterval(() => {
-    if (productAutoSlide && productSlideIndex !== productSlide.children.length - (screen.width < 800 ? 2 : 5))
+    if (productAutoSlide && productSlideIndex !== productSlide.children.length - (document.documentElement.clientWidth < 800 ? 2 : 5))
         moveProductHandler('right')
 }, 5000)
 
 // Button Clicks
 productRightButton.addEventListener('click', () => {
-    if (productSlideIndex !== productSlide.children.length - (screen.width < 800 ? 2 : 5)) {
+    if (productSlideIndex !== productSlide.children.length - (document.documentElement.clientWidth < 800 ? 2 : 5)) {
         productAutoSlide = false
         if (productSliderIsMoving) return
         moveProductHandler('right')
@@ -224,7 +258,7 @@ let bottomProductSliderIsMoving = false,
     bottomProductAutoSlide = true
 
 function moveBottomProductSlides() {
-    bottomProductSlide.style.transform = `translateX(-${bottomProductSlideIndex * (screen.width < 800 ? 50 : 20)}%)`
+    bottomProductSlide.style.transform = `translateX(-${bottomProductSlideIndex * (document.documentElement.clientWidth < 800 ? 50 : 20)}%)`
 }
 
 function moveBottomProductHandler(direction) {
@@ -273,13 +307,13 @@ async function fetchBottomProductImages() {
 fetchBottomProductImages()
 
 setInterval(() => {
-    if (bottomProductAutoSlide && bottomProductSlideIndex !== bottomProductSlide.children.length - (screen.width < 800 ? 2 : 5))
+    if (bottomProductAutoSlide && bottomProductSlideIndex !== bottomProductSlide.children.length - (document.documentElement.clientWidth < 800 ? 2 : 5))
         moveBottomProductHandler('right')
 }, 5000)
 
 // Button Clicks
 bottomRightButton.addEventListener('click', () => {
-    if (bottomProductSlideIndex !== bottomProductSlide.children.length - (screen.width < 800 ? 2 : 5)) {
+    if (bottomProductSlideIndex !== bottomProductSlide.children.length - (document.documentElement.clientWidth < 800 ? 2 : 5)) {
         bottomProductAutoSlide = false
         if (productSliderIsMoving) return
         moveBottomProductHandler('right')
