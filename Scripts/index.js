@@ -213,3 +213,87 @@ productLeftButton.addEventListener('click', () => {
 })
 
 productSlide.addEventListener('transitionend', () => productSliderIsMoving = false)
+
+// MAIN BOTTOM PRODUCTS
+
+const bottomProductSlide = document.querySelector(".bottom-products-slide"),
+    bottomRightButton = document.querySelector(".bottom-products-btn-right"),
+    bottomLeftButton = document.querySelector(".bottom-products-btn-left")
+let bottomProductSliderIsMoving = false,
+    bottomProductSlideIndex = 0,
+    bottomProductAutoSlide = true
+
+function moveBottomProductSlides() {
+    bottomProductSlide.style.transform = `translateX(-${bottomProductSlideIndex * (screen.width < 800 ? 50 : 20)}%)`
+}
+
+function moveBottomProductHandler(direction) {
+    bottomProductSliderIsMoving = true
+    direction !== 'right' ? (bottomProductSlideIndex -= 1) : (bottomProductSlideIndex += 1)
+    moveBottomProductSlides()
+}
+
+function bottomProcessProducItems(item) {
+    return (
+        `<div class="product">
+            <a class="item-category">Aksesuar</a>
+            <div class="product-img-container">
+            <span class="sale">%25</span>
+                <a href="#" class="img-link">
+                    <img class="product-image" src=${item.url} alt=${item.src}>
+                </a>
+                <div class="fav-icon" title="Favorilere Ekle"></div>
+                <div class="shopping-card">
+                    <a href="#" title="Sepete Ekle">Sepete Ekle</a>
+                </div>
+            </div>
+            <div class="product-details">
+                <span class="product-name">
+                    <a href="#">${item.name}</a>
+                </span>
+            </div>
+            <div class="product-price">
+                <sub>${item.sub}</sub>
+                <sup>${item.sup}</sup>
+            </div>
+        </div>`
+    )
+}
+
+async function fetchBottomProductImages() {
+    await fetch('./images/bottom-product-images.json').then(res => {
+        if (!res.ok) throw new Error('Fetch error')
+        return res.json()
+    }).then(data => {
+        bottomProductSlide.innerHTML = data.map(bottomProcessProducItems).join('')
+        moveBottomProductSlides()
+    }).catch(error => console.log(error))
+}
+
+fetchBottomProductImages()
+
+setInterval(() => {
+    if (bottomProductAutoSlide && bottomProductSlideIndex !== bottomProductSlide.children.length - (screen.width < 800 ? 2 : 5))
+        moveBottomProductHandler('right')
+}, 5000)
+
+// Button Clicks
+bottomRightButton.addEventListener('click', () => {
+    if (bottomProductSlideIndex !== bottomProductSlide.children.length - (screen.width < 800 ? 2 : 5)) {
+        bottomProductAutoSlide = false
+        if (productSliderIsMoving) return
+        moveBottomProductHandler('right')
+        setTimeout(() => bottomProductAutoSlide = true, 10000)
+    }
+})
+
+bottomLeftButton.addEventListener('click', () => {
+    if (productSlideIndex !== 0) {
+        productAutoSlide = false
+        if (productSliderIsMoving) return
+        moveBottomProductHandler('left')
+        setTimeout(() => productAutoSlide = true, 10000)
+    }
+})
+
+bottomProductSlide.addEventListener('transitionend', () => bottomProductSliderIsMoving = false)
