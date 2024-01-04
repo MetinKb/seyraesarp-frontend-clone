@@ -245,7 +245,7 @@ body::-webkit-scrollbar-track {
     align-items: center;
     min-height: 2.5rem;
     background-color: #f3f3f3;
-    z-index: 4;
+    z-index: 3;
 }
 
 .nav-titles {
